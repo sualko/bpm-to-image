@@ -94,20 +94,22 @@ async function printDiagram(page, options) {
       console.error(`Unknown output file format: ${output}`);
     }
   }
-
 }
 
 
-async function withPage(fn) {
+async function withPage(fn, options) {
   let browser;
+  const args = [];
+
+  options = options || {};
+
+  if (options.disableSandbox) {
+    args.push('--no-sandbox');
+    args.push('--disable-setuid-sandbox');
+  }
 
   try {
-    browser = await puppeteer.launch({
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox'
-      ]
-    });
+    browser = await puppeteer.launch({ args });
 
     await fn(await browser.newPage());
   } finally {
@@ -118,16 +120,17 @@ async function withPage(fn) {
 }
 
 
-async function convertAll(conversions, options={}) {
+async function convertAll(conversions, options = {}) {
 
   const {
     minDimensions,
     footer,
     title,
-    deviceScaleFactor
+    deviceScaleFactor,
+    disableSandbox,
   } = options;
 
-  await withPage(async function(page) {
+  await withPage(async function (page) {
 
     for (const conversion of conversions) {
 
@@ -146,7 +149,7 @@ async function convertAll(conversions, options={}) {
       });
     }
 
-  });
+  }, {disableSandbox});
 
 }
 

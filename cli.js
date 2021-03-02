@@ -58,6 +58,9 @@ const cli = meow(`
     },
     scale: {
       default: 1
+    },
+    disableSandbox: {
+      default: false
     }
   }
 });
@@ -104,6 +107,8 @@ const title = cli.flags.title === false ? false : cli.flags.title;
 
 const scale = cli.flags.scale !== undefined ? cli.flags.scale : 1;
 
+const disableSandbox = cli.flags.disableSandbox;
+
 const [ width, height ] = cli.flags.minDimensions.split('x').map(function(d) {
   return parseInt(d, 10);
 });
@@ -111,7 +116,8 @@ convertAll(conversions, {
   minDimensions: { width, height },
   title,
   footer,
-  deviceScaleFactor: scale
+  deviceScaleFactor: scale,
+  disableSandbox,
 }).catch(function(e) {
   console.error('failed to export diagram(s)');
   console.error(e);
