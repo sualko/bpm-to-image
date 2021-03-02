@@ -161,3 +161,53 @@ async function toSVG() {
 
     return svg;
 }
+
+function loadScript(src) {
+    const head = document.head;
+    const script = document.createElement('script');
+
+    script.type = 'text/javascript';
+    script.src = src;
+
+    const promise = new Promise((resolve, reject) => {
+
+        function callback(fn) {
+            return (arg) => {
+                script.onload = script.onerror = null;
+                return fn(arg);
+            };
+        }
+
+        script.onload = callback(resolve);
+        script.onerror = callback(reject);
+    });
+
+    head.appendChild(script);
+
+    return promise;
+}
+
+function loadStylesheet(href) {
+    const head = document.head;
+    const link = document.createElement('link');
+
+    link.rel = 'stylesheet';
+    link.href = href;
+
+    const promise = new Promise((resolve, reject) => {
+
+        function callback(fn) {
+            return (arg) => {
+                link.onload = link.onerror = null;
+                return fn(arg);
+            };
+        }
+
+        link.onload = callback(resolve);
+        link.onerror = callback(reject);
+    });
+
+    head.appendChild(link);
+
+    return promise;
+}

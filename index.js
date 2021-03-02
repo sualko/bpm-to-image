@@ -2,7 +2,8 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 const {
-  basename
+  basename,
+  relative
 } = require('path');
 
 const {
@@ -38,12 +39,35 @@ async function printDiagram(page, options) {
 
   await page.goto(`file://${__dirname}/skeleton.html`);
 
+  const dependencies = {
+    scripts: [
+      relative(__dirname, require.resolve('dmn-js/dist/dmn-viewer.production.min.js')),
+      relative(__dirname, require.resolve('bpmn-js/dist/bpmn-viewer.production.min.js')),
+    ],
+    stylesheets: [
+      relative(__dirname, require.resolve('dmn-js/dist/assets/dmn-js-drd.css')),
+      relative(__dirname, require.resolve('dmn-js/dist/assets/dmn-js-decision-table.css')),
+      relative(__dirname, require.resolve('dmn-js/dist/assets/dmn-js-literal-expression.css')),
+      relative(__dirname, require.resolve('dmn-js/dist/assets/dmn-js-shared.css')),
+      relative(__dirname, require.resolve('dmn-js/dist/assets/dmn-font/css/dmn.css')),
+    ],
+  }
+
   const desiredViewport = await page.evaluate(async function (diagramXML, options) {
 
     const {
+      dependencies,
       type,
       ...openOptions
     } = options;
+
+    for(const script of dependencies.scripts) {
+      await loadScript(script);
+    }
+
+    for(const stylesheet of dependencies.stylesheets) {
+      await loadStylesheet(stylesheet);
+    }
 
     // returns desired viewport
     return openDiagram(type, diagramXML, openOptions);
@@ -52,6 +76,7 @@ async function printDiagram(page, options) {
     title: diagramTitle,
     footer,
     type,
+    dependencies,
   });;
 
   page.setViewport({
@@ -60,9 +85,7 @@ async function printDiagram(page, options) {
     deviceScaleFactor: deviceScaleFactor
   });
 
-  await page.evaluate(() => {
-    return resize();
-  });
+  await page.evaluate(() => resize());
 
   for (const output of outputs) {
     if (output.endsWith('.pdf')) {
