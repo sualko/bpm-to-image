@@ -3,6 +3,32 @@ let viewers = {};
 
 let currentViewerType;
 
+class DmnPromisfied {
+    constructor(options) {
+        this.dmn = new DmnJS(options);
+    }
+
+    on(name, cb) {
+        this.dmn.on(name, cb);
+    }
+
+    get(key) {
+        return this.dmn.getActiveViewer().get(key);
+    }
+
+    importXML(xml) {
+        return new Promise((resolve, reject) => {
+            this.dmn.importXML(xml, function (err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
+        });
+    }
+}
+
 /**
  * Get or create viewer instance.
  *
@@ -34,7 +60,7 @@ function getViewer(type) {
     }
 
     if (type === 'dmn') {
-        viewers[type] = new DmnJS({
+        viewers[type] = new DmnPromisfied({
             container: '#canvas'
         });
     } else if (type === 'bpmn') {
@@ -60,10 +86,7 @@ function getViewer(type) {
             console.log(warnings);
         }
 
-        // zoom to fit full viewport
-        let activeViewer = viewers[type].getActiveViewer ? viewers[type].getActiveViewer() : viewers[type];
-
-        activeViewer
+        viewers[type]
             .get('canvas')
             .zoom('fit-viewport');
     });
@@ -80,7 +103,7 @@ function getViewer(type) {
  *
  * @return {Promise<Bounds, Error>}
  */
-function openDiagram(type, xml, options) {
+async function openDiagram(type, xml, options) {
     // viewer instance, lazily initialized
     const viewer = getViewer(type);
 
@@ -95,67 +118,46 @@ function openDiagram(type, xml, options) {
 
     const footer = options.footer;
 
-    return new Promise(function (resolve, reject) {
-        viewer.importXML(xml, function (err) {
+    await viewer.importXML(xml);
 
-            if (err) {
-                return reject(err);
-            }
+    let viewbox = viewer.get('canvas').viewbox();
 
-            let viewbox = viewer.getActiveViewer ? viewer.getActiveViewer().get('canvas').viewbox() : viewer.get(
-                'canvas').viewbox();
+    // uses provided title
+    let titleNode = document.querySelector('#title');
 
-            // uses provided title
-            let titleNode = document.querySelector('#title');
+    if (title) {
+        titleNode.textContent = title;
+    }
 
-            if (title) {
-                titleNode.textContent = title;
-            }
+    titleNode.style.display = title ? 'block' : 'none';
 
-            titleNode.style.display = title ? 'block' : 'none';
+    let width = Math.max(viewbox.inner.width, minDimensions.width);
+    let diagramHeight = Math.max(viewbox.inner.height + (footer ? 90 : 0), minDimensions.height);
 
-            let width = Math.max(viewbox.inner.width, minDimensions.width);
-            let diagramHeight = Math.max(viewbox.inner.height + (footer ? 90 : 0), minDimensions.height);
-
-            let desiredViewport = {
-                width,
-                height: diagramHeight + (footer ? 0 : 90),
-                diagramHeight
-            };
-
-            return resolve(desiredViewport);
-        });
-    });
+    return {
+        width,
+        height: diagramHeight + (footer ? 0 : 90),
+        diagramHeight
+    };
 }
 
 /**
  * Resize to viewport
  */
-function resize() {
+async function resize() {
     const viewer = getViewer();
 
-    let canvas = viewer.getActiveViewer ? viewer.getActiveViewer().get('canvas') : viewer.get('canvas');
+    let canvas = viewer.get('canvas');
 
-    return new Promise(function (resolve, reject) {
-        canvas.resized();
+    canvas.resized();
 
-        canvas.zoom('fit-viewport');
-
-        return resolve();
-    });
+    canvas.zoom('fit-viewport');
 }
 
-function toSVG() {
+async function toSVG() {
     const viewer = getViewer();
 
-    return new Promise(function (resolve, reject) {
-        viewer.saveSVG(function (err, svg) {
+    const { svg } = await viewer.saveSVG();
 
-            if (err) {
-                reject(err);
-            } else {
-                resolve(svg);
-            }
-        });
-    });
+    return svg;
 }
