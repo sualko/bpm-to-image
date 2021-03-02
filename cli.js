@@ -107,7 +107,7 @@ const footer = cli.flags.footer;
 
 const title = cli.flags.title === false ? false : cli.flags.title;
 
-const scale = cli.flags.scale !== undefined ? cli.flags.scale : 1;
+const scale = cli.flags.scale !== undefined ? parseFloat(cli.flags.scale) : 1;
 
 const disableSandbox = cli.flags.disableSandbox;
 
