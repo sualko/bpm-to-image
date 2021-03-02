@@ -2,14 +2,14 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 const {
-  basename,
-  resolve,
-  relative
+  basename
 } = require('path');
 
 const {
   readFileSync
 } = require('fs');
+
+const SUPPORTED_TYPES = ['dmn', 'bpmn'];
 
 
 async function printDiagram(page, options) {
@@ -23,6 +23,13 @@ async function printDiagram(page, options) {
     deviceScaleFactor
   } = options;
 
+  const type = input.split('.').pop().toLowerCase();
+
+  if (!SUPPORTED_TYPES.includes(type)) {
+    console.error(`Unknown input file format: ${type}`);
+    return;
+  }
+
   const diagramXML = readFileSync(input, 'utf8');
 
   const diagramTitle = title === false ? false : (
@@ -31,24 +38,20 @@ async function printDiagram(page, options) {
 
   await page.goto(`file://${__dirname}/skeleton.html`);
 
-  const viewerScript = relative(__dirname, require.resolve('bpmn-js/dist/bpmn-viewer.production.min.js'));
-
-  const desiredViewport = await page.evaluate(async function(diagramXML, options) {
+  const desiredViewport = await page.evaluate(async function (diagramXML, options) {
 
     const {
-      viewerScript,
+      type,
       ...openOptions
     } = options;
 
-    await loadScript(viewerScript);
-
     // returns desired viewport
-    return openDiagram(diagramXML, openOptions);
+    return openDiagram(type, diagramXML, openOptions);
   }, diagramXML, {
     minDimensions,
     title: diagramTitle,
-    viewerScript,
-    footer
+    footer,
+    type,
   });;
 
   page.setViewport({
@@ -62,17 +65,13 @@ async function printDiagram(page, options) {
   });
 
   for (const output of outputs) {
-
-    console.log(`writing ${output}`);
-
     if (output.endsWith('.pdf')) {
       await page.pdf({
         path: output,
         width: desiredViewport.width,
         height: desiredViewport.diagramHeight
       });
-    } else
-    if (output.endsWith('.png')) {
+    } else if (output.endsWith('.png')) {
       await page.screenshot({
         path: output,
         clip: {
@@ -82,9 +81,7 @@ async function printDiagram(page, options) {
           height: desiredViewport.diagramHeight
         }
       });
-    } else
-    if (output.endsWith('.svg')) {
-
+    } else if (output.endsWith('.svg') && type === 'bpmn') {
       const svg = await page.evaluate(() => {
         return toSVG();
       });
@@ -149,7 +146,7 @@ async function convertAll(conversions, options = {}) {
       });
     }
 
-  }, {disableSandbox});
+  }, { disableSandbox });
 
 }
 
@@ -159,7 +156,7 @@ async function convert(input, output) {
   return await convertAll([
     {
       input,
-      outputs: [ output ]
+      outputs: [output]
     }
   ]);
 }

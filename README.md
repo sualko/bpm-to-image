@@ -1,26 +1,26 @@
-# bpmn-to-image
+# bpm-to-image
 
-[![Build Status](https://travis-ci.com/bpmn-io/bpmn-to-image.svg?branch=master)](https://travis-ci.com/bpmn-io/bpmn-to-image)
-
-Convert [BPMN 2.0 diagrams](https://www.omg.org/spec/BPMN/2.0) to PDF documents, SVG or PNG files.
+Convert [BPMN 2.0 diagrams](https://www.omg.org/spec/BPMN/2.0) to PDF documents,
+SVG or PNG files and [DMN diagrams](https://www.omg.org/spec/DMN) to PDF
+documents or PNG files.
 
 
 ## Usage
 
-This package exposes the `bpmn-to-image` command line utility that allows you to convert BPMN 2.0 diagrams to PNG and PDF documents:
+This package exposes the `bpm-to-image` command line utility that allows you to
+convert BPM diagrams to PNG and PDF documents:
 
-```bash
-$ bpmn-to-image --help
-
-  Convert a BPMN 2.0 diagrams to PDF or PNG images
+```
+$ node cli.js
+  Convert a BPMN 2.0 or DMN diagrams to PDF, SVG or PNG images
 
   Usage
 
-    $ bpmn-to-image <diagramFile>:<outputConfig> ...
+    $ bpm-to-image <diagramFile>:<outputConfig> ...
 
   Options
 
-    diagramFile                    Path to BPMN diagram
+    diagramFile                    Path to BPM diagram (needs bpmn or dmn file extension)
     outputConfig                   List of extension or output file paths
 
     --min-dimensions=<dimensions>  Minimum size in pixels (<width>x<height>)
@@ -32,27 +32,28 @@ $ bpmn-to-image --help
 
     --scale                        Scale factor for images (1)
 
+    --disable-sandbox              Disable sandbox of Chromium
+
   Examples
 
     # export to diagram.png
-    $ bpmn-to-image diagram.bpmn:diagram.png
+    $ bpm-to-image diagram.bpmn:diagram.png
 
-    # export diagram.png, diagram.svg and /tmp/diagram.pdf
-    $ bpmn-to-image diagram.bpmn:diagram.png,diagram.svg,/tmp/diagram.pdf
+    # export diagram.png and /tmp/diagram.pdf
+    $ bpm-to-image diagram.bpmn:diagram.png,/tmp/diagram.pdf
 
     # export with minimum size of 500x300 pixels
-    $ bpmn-to-image --min-dimensions=500x300 diagram.bpmn:png
+    $ bpm-to-image --min-dimensions=500x300 diagram.bpmn:png
 ```
-
 
 ## Embedding
 
-You may embed [bpmn-to-image](https://github.com/bpmn-io/bpmn-to-image) and use it as parts of your application:
+You may embed [bpm-to-image](https://github.com/sualko/bpm-to-image) and use it as parts of your application:
 
 ```javascript
 const {
   convertAll
-} = require('bpmn-to-image');
+} = require('bpm-to-image');
 
 await convertAll([
   {
@@ -66,13 +67,16 @@ await convertAll([
 ]);
 ```
 
-This renders the BPMN diagram using [bpmn-js](https://github.com/bpmn-io/bpmn-js) and exports it to the specified output files using [Puppeteer](https://github.com/GoogleChrome/puppeteer).
+This renders the BPMN diagram using
+[bpmn-js](https://github.com/bpmn-io/bpmn-js) and exports it to the specified
+output files using [Puppeteer](https://github.com/GoogleChrome/puppeteer).
 
 
 ## Install
 
 ```bash
-npm install -g bpmn-to-image
+$ git clone https://github.com/sualko/bpm-to-image
+$ yarn install
 ```
 
 

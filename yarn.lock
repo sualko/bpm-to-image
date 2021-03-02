@@ -123,6 +123,13 @@ camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
   integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
 
+camunda-dmn-moddle@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/camunda-dmn-moddle/-/camunda-dmn-moddle-1.1.0.tgz#16c1e72805e634e062850c7b23fe178c897697e0"
+  integrity sha512-jRPrAYgpCLBg52ydpSHT6frXqWhRg6PV3YG9DUz5CO3SPo7qtbiMwUwb06nmKgyR+UerDbUA7eistQsuM7kidw==
+  dependencies:
+    min-dash "^3.0.0"
+
 chai@^4.1.2:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.3.0.tgz#5523a5faf7f819c8a92480d70a8cccbadacfc25f"
@@ -170,6 +177,16 @@ component-event@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/component-event/-/component-event-0.1.4.tgz#3de78fc28782381787e24bf2a7c536bf0142c9b4"
   integrity sha1-PeePwoeCOBeH4kvyp8U2vwFCybQ=
+
+component-props@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/component-props/-/component-props-1.1.1.tgz#f9b7df9b9927b6e6d97c9bd272aa867670f34944"
+  integrity sha1-+bffm5kntubZfJvScqqGdnDzSUQ=
+
+component-xor@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/component-xor/-/component-xor-0.0.4.tgz#c55d83ccc1b94cd5089a4e93fa7891c7263e59aa"
+  integrity sha1-xV2DzMG5TNUImk6T+niRxyY+Wao=
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -281,7 +298,7 @@ del@^3.0.0:
     pify "^3.0.0"
     rimraf "^2.2.8"
 
-diagram-js-direct-editing@^1.6.1:
+diagram-js-direct-editing@^1.6.1, diagram-js-direct-editing@^1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/diagram-js-direct-editing/-/diagram-js-direct-editing-1.6.2.tgz#d6ed7076f24227048d7ea6b1837b9a08954fc6ad"
   integrity sha512-hAiSnt6iETMLHBRsCU+XeATiV7u/rovlAX/l4MnvzW6+VeHqQOn+xFetD6JwxfTHKvT3h9fAQpfMZPOPlRFNlw==
@@ -304,15 +321,120 @@ diagram-js@^6.6.1:
     path-intersection "^2.2.0"
     tiny-svg "^2.2.1"
 
+diagram-js@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/diagram-js/-/diagram-js-7.2.0.tgz#fc20a24665d8eec5af975905c16e68900c61bdb2"
+  integrity sha512-K1cJkz/e00oX+wJqaAynonteRvDi/OHP+wgJS3+lulXMUc9vdk7o5m10Vdb60Mb/Z2bsbVRyn7pJmngj/jopEQ==
+  dependencies:
+    css.escape "^1.5.1"
+    didi "^5.2.1"
+    hammerjs "^2.0.1"
+    inherits "^2.0.4"
+    min-dash "^3.5.2"
+    min-dom "^3.1.3"
+    object-refs "^0.3.0"
+    path-intersection "^2.2.0"
+    tiny-svg "^2.2.2"
+
 didi@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/didi/-/didi-4.0.0.tgz#2b89d892a67fd3777f7642d3bf06697b69e9b622"
   integrity sha512-AzMElh8mCHOPWPCWfGjoJRla31fMXUT6+287W5ef3IPmtuBcyG9+MkFS7uPP6v3t2Cl086KwWfRB9mESa0OsHQ==
 
+didi@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/didi/-/didi-5.2.1.tgz#1a0b1336be8baa0b068a72036eedd9fb94135bff"
+  integrity sha512-IKNnajUlD4lWMy/Q9Emkk7H1qnzREgY4UyE3IhmOi/9IKua0JYtYldk928bOdt1yNxN8EiOy1sqtSozEYsmjCg==
+
 diff@3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
+
+dmn-js-decision-table@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/dmn-js-decision-table/-/dmn-js-decision-table-10.1.0.tgz#add44ecb89fe6e8e8196a4ea8caead7eb82d2603"
+  integrity sha512-hL9Kv+yS8eLfyQe2fGvYNSC0PRztmWbTOMJMjq9M+o9CqR14UMszhOqSmnHpegsERhV4pWoJFQCKk2ScXUkjig==
+  dependencies:
+    css.escape "^1.5.1"
+    diagram-js "^7.2.0"
+    dmn-js-shared "^10.1.0"
+    escape-html "^1.0.3"
+    inferno "~5.6.2"
+    min-dash "^3.5.2"
+    min-dom "^3.1.3"
+    selection-ranges "^3.0.2"
+    table-js "^7.1.0"
+
+dmn-js-drd@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/dmn-js-drd/-/dmn-js-drd-10.1.0.tgz#2337c558befad15d7dda9c90f4b6d82c7414f7d0"
+  integrity sha512-INjLhBAUweKIC511SwjMQOgEz6azf52cU0OsUctJNBp6z35WBNSiJdqNYn1BXzy5wMxWZAz+90x+7DaDUw/63Q==
+  dependencies:
+    diagram-js "^7.2.0"
+    diagram-js-direct-editing "^1.6.2"
+    dmn-js-shared "^10.1.0"
+    inherits "^2.0.1"
+    min-dash "^3.5.2"
+    min-dom "^3.1.3"
+    object-refs "^0.3.0"
+    tiny-svg "^2.2.1"
+
+dmn-js-literal-expression@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/dmn-js-literal-expression/-/dmn-js-literal-expression-10.1.0.tgz#ba31cc5690baffbd2c12229dba6ba25ae0360b87"
+  integrity sha512-d+6WdQrBAixxPKuEaqN4jEW785RuXMM9Pp1mS0z6BsylukCDdVf0b4X0FljrXQcIC9qLqJlWlIEFrBbfrLiEFQ==
+  dependencies:
+    diagram-js "^7.2.0"
+    dmn-js-shared "^10.1.0"
+    escape-html "^1.0.3"
+    inferno "~5.6.2"
+    min-dash "^3.5.2"
+    min-dom "^3.1.3"
+    table-js "^7.1.0"
+
+dmn-js-shared@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/dmn-js-shared/-/dmn-js-shared-10.1.0.tgz#852c4ab88e01738180437546bbccaf12ba567ceb"
+  integrity sha512-d9mniwf71hT47/xhJHyoCp/ebhfPnmtiSdPmiOguqiFJCRDJlSW0eY8Snx0tBu8cQn3nHu4OJPQ0ivTdjyqGSQ==
+  dependencies:
+    camunda-dmn-moddle "^1.0.0"
+    diagram-js "^7.2.0"
+    dmn-moddle "^9.1.0"
+    ids "^0.2.0"
+    inferno "~5.6.2"
+    min-dash "^3.5.2"
+    min-dom "^3.1.3"
+    selection-ranges "^3.0.2"
+    selection-update "^0.1.2"
+    table-js "^7.1.0"
+
+dmn-js@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/dmn-js/-/dmn-js-10.1.0.tgz#0472f379cd97696984242d0967ba87209cfc4f9c"
+  integrity sha512-pITnc9SiIOFpT0u+MDQtfsxynCiFqqCPMfPhXcVMBsHYczSxQgbBP9CSCtkqKVskknTD3Kxreq1nLXORK4hdPA==
+  dependencies:
+    dmn-js-decision-table "^10.1.0"
+    dmn-js-drd "^10.1.0"
+    dmn-js-literal-expression "^10.1.0"
+    dmn-js-shared "^10.1.0"
+
+dmn-moddle@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/dmn-moddle/-/dmn-moddle-9.1.0.tgz#8caf73fce08f70501432c57ea464a5fd33965a62"
+  integrity sha512-LA76wn5SD5fjExD0ZqHAngApN6iGb2bQhKFZCykQa6uyTadBys4kmgcv/sYv/WAm5cY0DcS/Vnn35YgK75f6VQ==
+  dependencies:
+    min-dash "^3.0.0"
+    moddle "^5.0.1"
+    moddle-xml "^8.0.1"
+
+dom-iterator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/dom-iterator/-/dom-iterator-1.0.0.tgz#9c09899846ec41c2d257adc4d6015e4759ef05ad"
+  integrity sha512-7dsMOQI07EMU98gQM8NSB3GsAiIeBYIPKpnxR3c9xOvdvBjChAcOM0iJ222I3p5xyiZO9e5oggkNaCusuTdYig==
+  dependencies:
+    component-props "1.1.1"
+    component-xor "0.0.4"
 
 domify@^1.3.1:
   version "1.4.0"
@@ -368,6 +490,11 @@ es6-promisify@^5.0.0:
   integrity sha1-UQnWLz5W6pZ8S2NQWu8IKRyKUgM=
   dependencies:
     es6-promise "^4.0.3"
+
+escape-html@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
+  integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
 escape-string-regexp@1.0.5, escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -512,6 +639,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hat@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/hat/-/hat-0.0.3.tgz#bb014a9e64b3788aed8005917413d4ff3d502d8a"
+  integrity sha1-uwFKnmSzeIrtgAWRdBPU/z1QLYo=
+
 he@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
@@ -530,6 +662,13 @@ https-proxy-agent@^2.2.1:
     agent-base "^4.3.0"
     debug "^3.1.0"
 
+ids@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ids/-/ids-0.2.2.tgz#c23140dd06f5e5e95b1a5e5e98877ea734965540"
+  integrity sha512-icIO8S7A7Hat9x/59VYjS5uwfBU1xRTDxeFC4t9wNceLxZFm2JbPhO4lC/xhFqFNVaxw2idwpLgUfkVQrjsxIw==
+  dependencies:
+    hat "^0.0.3"
+
 ids@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ids/-/ids-1.0.0.tgz#df67f2d37b81d7c2effc87e03d17ebff95a58c05"
@@ -545,6 +684,25 @@ indexof@0.0.1:
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
   integrity sha1-gtwzbSMrkGIXnQWrMpOmYFn9Q10=
 
+inferno-shared@5.6.1:
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/inferno-shared/-/inferno-shared-5.6.1.tgz#5c5e471dbff72eb9f1768f97510a32e5fa76b6dd"
+  integrity sha512-OoRargelGtMFpiyKiOv66Ihmkpt6LLlzw7jOkJr97QqBRIjQWVvtDSriwJIy6pER6EEz9KzRUbZBaEWdPvf5kA==
+
+inferno-vnode-flags@5.6.1:
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/inferno-vnode-flags/-/inferno-vnode-flags-5.6.1.tgz#43974687cc54f22c24ecee116376f6c1bd697499"
+  integrity sha512-DDb6R17FX0Fs1SH+7SSVfHEFiYcN2U/DlPHB6qk2HOP149qtYgeRi5h0AAJswJCzBkV/QcBSyRirn0SAzl1NAQ==
+
+inferno@~5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-5.6.2.tgz#a256a9de063287fb18d09525a85467cbd6c5b47a"
+  integrity sha512-+blJ5pI0+5tmxhDDF2VuAPvOO3LPN/jp2eYkGzkXq/nptp1iH1crOsbhp8be1nnAtrGcNSWLbziulkOnejOTyQ==
+  dependencies:
+    inferno-shared "5.6.1"
+    inferno-vnode-flags "5.6.1"
+    opencollective-postinstall "^2.0.3"
+
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"
@@ -553,7 +711,7 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.3:
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
@@ -803,7 +961,7 @@ mocha@^5.1.1:
     mkdirp "0.5.1"
     supports-color "5.4.0"
 
-moddle-xml@^8.0.8:
+moddle-xml@^8.0.1, moddle-xml@^8.0.8:
   version "8.0.8"
   resolved "https://registry.yarnpkg.com/moddle-xml/-/moddle-xml-8.0.8.tgz#f14193394be8e1c5f6d1c0f892dee57523d41416"
   integrity sha512-JzW8wUCH7Qze7eh0T8A1exi7QJg6hRgq+uw8goHNP5Q7pWTGrLj83S+NgA/94M2I0JmqnK9hw3sCbyiKVOjc4Q==
@@ -907,6 +1065,11 @@ once@^1.3.0:
   integrity sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
   dependencies:
     wrappy "1"
+
+opencollective-postinstall@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
+  integrity sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==
 
 p-finally@^1.0.0:
   version "1.0.0"
@@ -1116,6 +1279,18 @@ saxen@^8.1.2:
   resolved "https://registry.yarnpkg.com/saxen/-/saxen-8.1.2.tgz#e677b32afe93667c9d939d3f3de02e09df108e54"
   integrity sha512-xUOiiFbc3Ow7p8KMxwsGICPx46ZQvy3+qfNVhrkwfz3Vvq45eGt98Ft5IQaA1R/7Tb5B5MKh9fUR9x3c3nDTxw==
 
+selection-ranges@^3.0.2, selection-ranges@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/selection-ranges/-/selection-ranges-3.0.3.tgz#7f346169d606b76e28e0fa721a115eb6efe97be1"
+  integrity sha512-60Oqc07j16YCrp96uITgBFu7oT81JKMmL+cOOcxe3jvuGSiFSwsLpOSXNBAlITV9hGhEl1H6P/+g1bKnpfXoSw==
+  dependencies:
+    dom-iterator "^1.0.0"
+
+selection-update@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/selection-update/-/selection-update-0.1.2.tgz#803a044dcc6edab5a3ae648f5f0357e89ad66b96"
+  integrity sha1-gDoETcxu2rWjrmSPXwNX6JrWa5Y=
+
 "semver@2 || 3 || 4 || 5", semver@^5.5.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
@@ -1230,7 +1405,18 @@ supports-color@^5.3.0:
   dependencies:
     has-flag "^3.0.0"
 
-tiny-svg@^2.2.1:
+table-js@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/table-js/-/table-js-7.1.0.tgz#c280efb6a8f5400bc58f75c057de8f473485a6e4"
+  integrity sha512-x2ctIc9KN6aDWzOAm079uA6RpCnyIK/S7hjzfBSLp1nPzaRo1Cc8rCVKSc2RzcvhOta1XqL1jKvwJGLTXFg8gw==
+  dependencies:
+    didi "^5.2.1"
+    ids "^1.0.0"
+    min-dash "^3.5.2"
+    min-dom "^3.1.3"
+    selection-ranges "^3.0.3"
+
+tiny-svg@^2.2.1, tiny-svg@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/tiny-svg/-/tiny-svg-2.2.2.tgz#9d9825c2e0ccb5e259bb1ae7d7ac79194e086657"
   integrity sha512-u6zCuMkDR/3VAh83X7hDRn/pi0XhwG2ycuNS0cTFtQjGdOG2tSvEb8ds65VeGWc3H6PUjJKeunueXqgkZqtMsg==

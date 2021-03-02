@@ -18,11 +18,11 @@ const {
 const cli = meow(`
   Usage
 
-    $ bpmn-to-image <diagramFile>${pathDelimiter}<outputConfig> ...
+    $ bpm-to-image <diagramFile>${pathDelimiter}<outputConfig> ...
 
   Options
 
-    diagramFile                    Path to BPMN diagram
+    diagramFile                    Path to BPM diagram (needs bpmn or dmn file extension)
     outputConfig                   List of extension or output file paths
 
     --min-dimensions=<dimensions>  Minimum size in pixels (<width>x<height>)
@@ -34,16 +34,18 @@ const cli = meow(`
 
     --scale                        Scale factor for images (1)
 
+    --disable-sandbox              Disable sandbox of Chromium
+
   Examples
 
     # export to diagram.png
-    $ bpmn-to-image diagram.bpmn${pathDelimiter}diagram.png
+    $ bpm-to-image diagram.bpmn${pathDelimiter}diagram.png
 
     # export diagram.png and /tmp/diagram.pdf
-    $ bpmn-to-image diagram.bpmn${pathDelimiter}diagram.png,/tmp/diagram.pdf
+    $ bpm-to-image diagram.bpmn${pathDelimiter}diagram.png,/tmp/diagram.pdf
 
     # export with minimum size of 500x300 pixels
-    $ bpmn-to-image --min-dimensions=500x300 diagram.bpmn${pathDelimiter}png
+    $ bpm-to-image --min-dimensions=500x300 diagram.bpmn${pathDelimiter}png
 `, {
   flags: {
     minDimensions: {
